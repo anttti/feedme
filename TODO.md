@@ -1,0 +1,4 @@
+- Fetch feeds
+- Item updates
+- Follow redirects
+- Hydrate full content
