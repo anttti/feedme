@@ -61,7 +61,8 @@ defmodule Feedme.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:req, "~> 0.5.0"},
-      {:fast_rss, "~> 0.5.0"}
+      {:fast_rss, "~> 0.5.0"},
+      {:timex, "~> 3.0"}
     ]
   end
 

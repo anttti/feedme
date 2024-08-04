@@ -3,8 +3,8 @@ defmodule Feedme.Repo.Migrations.CreateFeeds do
 
   def change do
     create table(:feeds) do
-      add :title, :string, null: false
-      add :url, :string, null: false
+      add :title, :text, null: false
+      add :url, :text, null: false
 
       timestamps(type: :utc_datetime)
     end

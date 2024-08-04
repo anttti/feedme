@@ -5,6 +5,7 @@ defmodule Feedme.Reader.Item do
   schema "items" do
     field :title, :string
     field :body, :string
+    field :url, :string
     field :feed_id, :id
     field :published_at, :utc_datetime
   end
@@ -12,7 +13,7 @@ defmodule Feedme.Reader.Item do
   @doc false
   def changeset(item, attrs) do
     item
-    |> cast(attrs, [:title, :body, :published_at])
-    |> validate_required([:title, :body, :published_at])
+    |> cast(attrs, [:title, :body, :url, :published_at])
+    |> validate_required([:title, :body, :url, :published_at])
   end
 end

@@ -3,8 +3,9 @@ defmodule Feedme.Repo.Migrations.CreateItems do
 
   def change do
     create table(:items) do
-      add :title, :string
-      add :body, :string, null: false
+      add :title, :text
+      add :body, :text, null: false
+      add :url, :text, null: false
       add :feed_id, references(:feeds, on_delete: :delete_all)
       add :published_at, :utc_datetime, null: false
     end
