@@ -11,3 +11,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 - [`Req`](https://hexdocs.pm/req/readme.html) as the HTTP client
 - [`FastRSS`](https://hexdocs.pm/fast_rss/readme.html) as the RSS parser
+
+## Running tests
+
+`mix test.watch --stale`

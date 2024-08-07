@@ -1,5 +1,10 @@
 import Config
 
+if Mix.env() == :dev do
+  config :mix_test_watch,
+    clear: true
+end
+
 # Configure your database
 config :feedme, Feedme.Repo,
   username: "postgres",

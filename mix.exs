@@ -62,7 +62,8 @@ defmodule Feedme.MixProject do
       {:bandit, "~> 1.5"},
       {:req, "~> 0.5.0"},
       {:fast_rss, "~> 0.5.0"},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
