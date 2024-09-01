@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Information Camouflage</title>
+  <id>https://bruceediger.com/</id>
+  <author>
+    <name>Information Camouflage</name>
+    <uri>https://bruceediger.com/</uri>
+  </author>
+  <generator>Hugo gohugo.io</generator>
+  <updated>2024-08-31T16:56:54Z</updated>
+  <link rel="self" type="application/atom+xml" href="https://bruceediger.com/atom.xml" hreflang="en"/>
+  <link rel="alternate" type="text/html" href="https://bruceediger.com/" hreflang="en"/>
+  <link rel="alternate" type="application/rss+xml" href="https://bruceediger.com/index.xml" hreflang="en"/>
+  <entry>
+    <title>Mergesort Investigation 10 - garbage collection</title>
+    <author>
+      <name>Bruce Ediger</name>
+      <uri>https://bruceediger.com/</uri>
+    </author>
+    <id>https://bruceediger.com/posts/mergesort-investigation-10/</id>
+    <updated>2024-08-27T13:28:46Z</updated>
+    <published>2024-08-27T03:53:45Z</published>
+    <content type="html">&lt;p&gt;Previously, in July 2021, I had tried to remove garbage collection
+from the possible variables affecting my iterative mergesort.
+I transliterated the Go code to a plain C version that could not have
+any garbage collection.
+The C code benchmarked very similarly to the Go code.&lt;/p&gt;
+&lt;p&gt;During the &lt;a href=&#34;https://bruceediger.com/posts/mergesort-investigation-1/&#34;&gt;current investigation&lt;/a&gt;
+I&amp;rsquo;ve &lt;a href=&#34;https://bruceediger.com/posts/mergesort-investigation-4/&#34;&gt;discovered&lt;/a&gt;
+hat the layout of the initial, unsorted,
+linked list in memory can have a drastic effect on how long &lt;a href=&#34;https://bruceediger.com/posts/mergesort-investigation-5/&#34;&gt;sorting&lt;/a&gt;
+or even merely &lt;a href=&#34;https://bruceediger.com/posts/mergesort-investigation-6/&#34;&gt;traversing&lt;/a&gt;,
+the linked lists can have.&lt;/p&gt;
+&lt;p&gt;I added code to my benchmarking that loses any reference to the linked list,
+then runs garbage collection after sorting iteration.
+None of the mergesort algorithms generate any garbage while sorting,
+but creating a new linked list immediately after sorting one
+might cause some non-locality-of-reference in the new linked list.
+Garbage collection is mysterious enough that it&amp;rsquo;s
+worth investigating.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;iterative mergesort benchmarks, with and w/o garbage collection&#34; src=&#34;/images/iterative_garbage_collected.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Above, benchmarks run on my Qotom fanless server,
+July 2021 algorithm, and Wikipedia&amp;rsquo;s bottom up with lists algorithm,
+with and without garbage collection after sorting,
+but before constructing a new list.&lt;/p&gt;
+&lt;p&gt;The purple line (&amp;ldquo;Qotom, July 2021 algorithm&amp;rdquo;)
+and the golden line (&amp;ldquo;Qotom bottom up algorithm&amp;rdquo;) on this graph are the same
+as the blue line and the gold line respectively
+on &lt;a href=&#34;https://bruceediger.com/posts/mergesort-investigation-9/#iterative-mergesorts-small-increment&#34;&gt;this graph&lt;/a&gt;,&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;iterative mergesort benchmarks, with and w/o garbage collection&#34; src=&#34;/images/iterative_garbage_collected2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;With and without garbage collection, as executed by a Macbook with an M2 ARM CPU.&lt;/p&gt;
+&lt;p&gt;The purple and green lines are rendered from the same data
+as the yellow and dark blue lines respectively
+on &lt;a href=&#34;https://bruceediger.com/posts/mergesort-investigation-9/#iterative-mergesorts-small-increment&#34;&gt;this graph&lt;/a&gt;,&lt;/p&gt;
+&lt;h2 id=&#34;conclusions&#34;&gt;Conclusions&lt;/h2&gt;
+&lt;p&gt;Collecting garbage after sorting a list,
+but before constructing a new list,
+made absolutely no difference.
+Benchmark data was nearly identical.
+Performance drops occurred at the same list lengths.&lt;/p&gt;
+&lt;p&gt;I hypothesize that the linked lists are so large, consuming so much memory,
+that there was already effective reuse of the previous iteration&amp;rsquo;s linked list memory,
+even though an explicit &lt;code&gt;runime.GC()&lt;/code&gt; did not exist in my benchmarking code.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m only including this because I did the work, and I want to document everything.&lt;/p&gt;</content>
+  </entry>
+</feed>

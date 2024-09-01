@@ -13,7 +13,7 @@ defmodule Feedme.Reader.Item do
   @doc false
   def changeset(item, attrs) do
     item
-    |> cast(attrs, [:title, :body, :url, :published_at])
-    |> validate_required([:title, :url, :published_at])
+    |> cast(attrs, [:title, :body, :url, :published_at, :feed_id])
+    |> validate_required([:url, :published_at, :feed_id])
   end
 end
