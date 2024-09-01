@@ -13,9 +13,8 @@ defmodule Feedme.Reader do
 
   # TODO
   #
-  # Follow redirects, validate that 2xx is returned
-  # Insert as bulk operation
-  # Calculate MD5 hash for title + body to see if they're updated
+  # Insert only new items
+  #   Calculate MD5 hash for title + body to see if they're updated
 
   def refresh_feeds(offset, limit) do
     feeds = from(Feed, limit: ^limit, offset: ^offset) |> Repo.all()
@@ -28,7 +27,7 @@ defmodule Feedme.Reader do
       Enum.flat_map(tasks, fn task ->
         # try/catch so that if a feed fetch fails, it does not take down the whole process
         try do
-          Task.await(task, 1000)
+          Task.await(task)
         catch
           error, _ ->
             IO.puts("CAUGHT!")
@@ -38,24 +37,13 @@ defmodule Feedme.Reader do
       end)
       |> Enum.filter(fn item -> item.valid? end)
 
-    valids =
+    valid_items =
       Enum.filter(results, fn changeset -> changeset.valid? end)
-      # Have to get the `.changes` to get the actual data fields, as that's how
-      # Repo.insert_all works
+      # Have to get the `.changes` to get the actual data fields, as that's how Repo.insert_all works
       |> Enum.map(fn changeset -> changeset.changes end)
+      |> Repo.insert_in_chunks(Item)
 
-    invalids = Enum.filter(results, fn changeset -> !changeset.valid? end)
-
-    IO.puts("Valid items: #{Enum.count(valids)}, Invalid items: #{Enum.count(invalids)}")
-
-    insert_in_chunks(valids)
-
-    {:ok, Enum.count(valids)}
-  end
-
-  defp insert_in_chunks(items) do
-    Enum.chunk_every(items, 1000)
-    |> Enum.map(fn chunk -> Repo.insert_all(Item, chunk) end)
+    {:ok, Enum.count(valid_items)}
   end
 
   def refresh_feed(id, url) when is_binary(url) do
