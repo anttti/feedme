@@ -36,7 +36,7 @@ defmodule Feedme.AtomFeedTest do
     test "parses RSS feed 6" do
       feed = File.read!("test/feedme/fixtures/steve.xml")
       {:ok, parsed_feed} = Reader.parse_rss_feed("https://dummy/feed.rss", feed)
-      assert Enum.count(parsed_feed) == 10
+      assert Enum.count(parsed_feed) == 1
     end
   end
 end

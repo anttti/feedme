@@ -67,37 +67,11 @@ defmodule Feedme.Reader do
   end
 
   def handle_feed(200, :rss, body, url) do
-    items =
-      with {:ok, items} <- parse_rss_feed(url, body) do
-        items
-      else
-        _ ->
-          IO.puts("No valid items in #{url}")
-          []
-      end
-
-    if Enum.count(items) == 0 do
-      {:error, "No valid items in feed #{url}"}
-    else
-      {:ok, items}
-    end
+    parse_rss_feed(url, body)
   end
 
   def handle_feed(200, :atom, body, url) do
-    items =
-      with {:ok, items} <- parse_atom_feed(url, body) do
-        items
-      else
-        _ ->
-          IO.puts("No valid items in #{url}")
-          []
-      end
-
-    if Enum.count(items) == 0 do
-      {:error, "No valid items in feed #{url}"}
-    else
-      {:ok, items}
-    end
+    parse_atom_feed(url, body)
   end
 
   def handle_feed(status, _, _, url) do
