@@ -1,0 +1,26 @@
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+  <channel>
+    <title>Send More Paramedics</title>
+    <atom:link href="https://blog.fogus.me/feed/" rel="self" type="application/rss+xml"/>
+    <link>https://blog.fogus.me</link>
+    <description>λ λ λ</description>
+    <lastBuildDate>Mon, 19 Aug 2024 14:39:45 +0000</lastBuildDate>
+    <language>en-US</language>
+    <sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+    <sy:updateFrequency>
+	1	</sy:updateFrequency>
+    <generator>https://wordpress.org/?v=6.2.6</generator>
+    <item>
+      <title>On method values, part 1</title>
+      <link>https://blog.fogus.me/2024/08/19/on-method-values-part-1/</link>
+      <dc:creator><![CDATA[fogus]]></dc:creator>
+      <pubDate>Mon, 19 Aug 2024 13:32:42 +0000</pubDate>
+      <category><![CDATA[computing]]></category>
+      <category><![CDATA[clojure]]></category>
+      <category><![CDATA[interop]]></category>
+      <guid isPermaLink="false">https://blog.fogus.me/?p=6957</guid>
+      <description><![CDATA[Prior to [discovering Clojure back in 2007](https://blog.fogus.me/2007/10/24/linkage-20071024/), I was a full-time Java programmer. This was long before method handles, method references, lambda expressions, and invokedynamic, so viewing Java through a functional programming lens was not second-nature to me. Regardless, during my early Clojure explorations I fully expected code like the following to &#8220;just work&#8221;: (defn [&#8230;]]]></description>
+    </item>
+  </channel>
+</rss>

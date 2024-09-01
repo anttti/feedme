@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Stavros' Stuff Latest Posts</title>
+    <link href="https://www.stavros.io/"/>
+    <atom:link href="https://www.stavros.io/feed/short/" rel="self"/>
+    <description>Latest posts on Stavros' Stuff.</description>
+    <language>en-us</language>
+    <author>
+      <name>Stavros Korokithakis</name>
+    </author>
+    <item>
+      <title>Making the Strofara</title>
+      <link>https://www.stavros.io/posts/making-the-strofara/</link>
+      <guid>https://www.stavros.io/posts/making-the-strofara/</guid>
+      <description>
+        &lt;div class="pull-quote"&gt;I made yet another silly thing&lt;/div&gt;&lt;p&gt;This is going to be pretty specific to a Greek audience, as it&amp;#8217;s all based on a Greek meme video, but I&amp;#8217;ll try to explain.
+&lt;a href="https://www.youtube.com/watch?v=jAMdqfTuIIU"&gt;Watch the video&lt;/a&gt; first so you know what I&amp;#8217;m talking about while I describe it:&lt;/p&gt;
+&lt;p&gt;Two guys are driving on a road near a remote village
+    </description>
+      <pubDate>Sun, 11 Aug 2024 16:14:27 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

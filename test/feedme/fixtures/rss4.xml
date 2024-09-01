@@ -1,0 +1,41 @@
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+  <channel>
+    <title>The Story's Story</title>
+    <atom:link href="https://jakeseliger.com/feed/?type=atom" rel="self" type="application/rss+xml"/>
+    <link>https://jakeseliger.com</link>
+    <description/>
+    <lastBuildDate>Tue, 06 Aug 2024 18:11:16 +0000</lastBuildDate>
+    <language>en</language>
+    <sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+    <sy:updateFrequency>
+	1	</sy:updateFrequency>
+    <generator>http://wordpress.com/</generator>
+    <atom:link rel="search" type="application/opensearchdescription+xml" href="https://jakeseliger.com/osd.xml" title="The Story's Story"/>
+    <atom:link rel="hub" href="https://jakeseliger.com/?pushpress=hub"/>
+    <item>
+      <title>“How to let go: one life ends while another begins”</title>
+      <link>https://jakeseliger.com/2024/08/06/how-to-let-go-one-life-ends-while-another-begins/</link>
+      <comments>https://jakeseliger.com/2024/08/06/how-to-let-go-one-life-ends-while-another-begins/#respond</comments>
+      <dc:creator><![CDATA[Jake Seliger]]></dc:creator>
+      <pubDate>Tue, 06 Aug 2024 18:11:16 +0000</pubDate>
+      <category><![CDATA[Books]]></category>
+      <category><![CDATA[Links]]></category>
+      <guid isPermaLink="false">http://jakeseliger.com/?p=9033</guid>
+      <description><![CDATA[&#8220;How to let go: one life ends while another begins. I&#8217;m seven months pregnant with our daughter as Jake&#8217;s life comes to a close. How do I walk into an uncertain future without him?&#8220;]]></description>
+      <content:encoded><![CDATA[
+<p>&#8220;<a href="https://bessstillman.substack.com/p/how-to-let-go-one-life-ends-while">How to let go: one life ends while another begins. I&#8217;m seven months pregnant with our daughter as Jake&#8217;s life comes to a close. How do I walk into an uncertain future without him?</a>&#8220;</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://jakeseliger.com/wp-content/uploads/2024/08/dsc00611.jpg"><img width="1024" height="764" data-attachment-id="9035" data-permalink="https://jakeseliger.com/2024/08/06/how-to-let-go-one-life-ends-while-another-begins/dsc00611/" data-orig-file="https://jakeseliger.com/wp-content/uploads/2024/08/dsc00611.jpg" data-orig-size="2048,1529" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="DSC00611" data-image-description="" data-image-caption="" data-medium-file="https://jakeseliger.com/wp-content/uploads/2024/08/dsc00611.jpg?w=300" data-large-file="https://jakeseliger.com/wp-content/uploads/2024/08/dsc00611.jpg?w=550" tabindex="0" role="button" src="https://jakeseliger.com/wp-content/uploads/2024/08/dsc00611.jpg?w=1024" alt="" class="wp-image-9035" /></a></figure>
+]]></content:encoded>
+      <wfw:commentRss>https://jakeseliger.com/2024/08/06/how-to-let-go-one-life-ends-while-another-begins/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <media:content url="https://1.gravatar.com/avatar/7db06ea6c8b149f54c6756ea9881481c2631cf717b2db5a8c62f7f6f1e1223d4?s=96&amp;d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D96" medium="image">
+        <media:title type="html">Jake Seliger</media:title>
+      </media:content>
+      <media:content url="https://jakeseliger.com/wp-content/uploads/2024/08/dsc00611.jpg?w=1024" medium="image"/>
+    </item>
+  </channel>
+</rss>

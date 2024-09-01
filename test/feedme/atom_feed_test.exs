@@ -284,9 +284,105 @@ defmodule Feedme.AtomFeedTest do
       "content_type" => "html",
       "lang" => nil,
       "src" => nil,
-      "value" =>
-        "<p>I needed to log when a light switched on and off during the night as part of debugging an oddly behaving movement sensor. To do that I built a really simple light sensor logger using an Arduino Leonardo, a large LED and a resistor or three. Here it is:</p><div class=\"separator\" style=\"clear: both; text-align: center;\"><a href=\"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXokF70rNbNS2w0ei9bHqVGaFi6KVXF6Cjlnd3Hp9yhhSD38FrvHTbdFRYr1JE4GUTywylxdFse1dKiBoO98IY3IYqpq8MSaUq6iAyq36rGKzgnli8gUKw_QmgleW2eJlX6Ns6MOukC_K3HvjRXfakGLjoHmCKL3Bj_-ful7Rz779ZPTy8UH-qXQ/s800/light-sense-1.jpg\" style=\"margin-left: 1em; margin-right: 1em;\"><img border=\"0\" data-original-height=\"768\" data-original-width=\"800\" height=\"614\" src=\"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXokF70rNbNS2w0ei9bHqVGaFi6KVXF6Cjlnd3Hp9yhhSD38FrvHTbdFRYr1JE4GUTywylxdFse1dKiBoO98IY3IYqpq8MSaUq6iAyq36rGKzgnli8gUKw_QmgleW2eJlX6Ns6MOukC_K3HvjRXfakGLjoHmCKL3Bj_-ful7Rz779ZPTy8UH-qXQ/w640-h614/light-sense-1.jpg\" width=\"640\" /></a></div><div class=\"separator\" style=\"clear: both; text-align: center;\"><br /></div><div class=\"separator\" style=\"clear: both; text-align: left;\">And here's the entire Arduino code:</div><div class=\"separator\" style=\"clear: both; text-align: left;\"><br /></div><blockquote style=\"border: none; margin: 0px 0px 0px 40px; padding: 0px; text-align: left;\"><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">void setup() {</span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">&nbsp; Serial.begin(9600);</span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">&nbsp; analogReference(EXTERNAL);</span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">}</span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\"><br /></span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">void loop() {</span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">&nbsp; Serial.println(analogRead(A1));</span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">&nbsp; delay(1000);</span></div></div><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><span style=\"font-family: courier;\">}</span></div></div></blockquote><div class=\"separator\" style=\"clear: both; text-align: left;\"><div class=\"separator\" style=\"clear: both;\"><br /></div><div class=\"separator\" style=\"clear: both;\">The main <span style=\"font-family: courier;\">loop()</span> just reads the voltage across the LED from analog input A1 and writes it to the serial port. Then it waits for a second. The <span style=\"font-family: courier;\">setup()</span> routine tells the ADC converter to use the voltage on AREF as the reference maximum voltage for the ADC.</div><div class=\"separator\" style=\"clear: both;\"><br /></div><div class=\"separator\" style=\"clear: both;\">The LED has a voltage of between about 0mV and 400mV depending on the amount of light.&nbsp;</div>\n  <br />\n  <iframe allow=\"accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\" loading=\"lazy\" src=\"https://customer-rww76yind8iym5aw.cloudflarestream.com/036d470ad7ea9dfb3e7207f81d19feaa/iframe?poster=https%3A%2F%2Fcustomer-rww76yind8iym5aw.cloudflarestream.com%2F036d470ad7ea9dfb3e7207f81d19feaa%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600\" style=\""
+      "value" => "<p>This is the content</p>"
     },
+    "contributors" => [],
+    "extensions" => %{
+      "media" => %{
+        "thumbnail" => [
+          %{
+            "attrs" => %{
+              "height" => "72",
+              "media" => "http://search.yahoo.com/mrss/",
+              "url" =>
+                "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXokF70rNbNS2w0ei9bHqVGaFi6KVXF6Cjlnd3Hp9yhhSD38FrvHTbdFRYr1JE4GUTywylxdFse1dKiBoO98IY3IYqpq8MSaUq6iAyq36rGKzgnli8gUKw_QmgleW2eJlX6Ns6MOukC_K3HvjRXfakGLjoHmCKL3Bj_-ful7Rz779ZPTy8UH-qXQ/s72-w640-h614-c/light-sense-1.jpg",
+              "width" => "72"
+            },
+            "children" => %{},
+            "name" => "media:thumbnail",
+            "value" => nil
+          }
+        ]
+      },
+      "thr" => %{
+        "total" => [
+          %{
+            "attrs" => %{},
+            "children" => %{},
+            "name" => "thr:total",
+            "value" => "3"
+          }
+        ]
+      }
+    },
+    "id" => "tag:blogger.com,1999:blog-19303585.post-8870263574877874516",
+    "links" => [
+      %{
+        "href" => "http://blog.jgc.org/feeds/8870263574877874516/comments/default",
+        "hreflang" => nil,
+        "length" => nil,
+        "mime_type" => "application/atom+xml",
+        "rel" => "replies",
+        "title" => "Post Comments"
+      },
+      %{
+        "href" => "http://www.blogger.com/comment.g?blogID=19303585&postID=8870263574877874516",
+        "hreflang" => nil,
+        "length" => nil,
+        "mime_type" => "text/html",
+        "rel" => "replies",
+        "title" => "3 Comments"
+      },
+      %{
+        "href" => "http://www.blogger.com/feeds/19303585/posts/default/8870263574877874516",
+        "hreflang" => nil,
+        "length" => nil,
+        "mime_type" => "application/atom+xml",
+        "rel" => "edit",
+        "title" => nil
+      },
+      %{
+        "href" => "http://www.blogger.com/feeds/19303585/posts/default/8870263574877874516",
+        "hreflang" => nil,
+        "length" => nil,
+        "mime_type" => "application/atom+xml",
+        "rel" => "self",
+        "title" => nil
+      },
+      %{
+        "href" => "http://blog.jgc.org/2024/06/two-ways-to-use-led-as-light-sensor.html",
+        "hreflang" => nil,
+        "length" => nil,
+        "mime_type" => "text/html",
+        "rel" => "alternate",
+        "title" => "Two ways to use  an LED as a light sensor with Arduino"
+      }
+    ],
+    "published" => "2024-06-19T07:43:00.016Z",
+    "rights" => nil,
+    "source" => nil,
+    "summary" => nil,
+    "title" => %{
+      "base" => nil,
+      "lang" => nil,
+      "type" => "Text",
+      "value" => "Two ways to use  an LED as a light sensor with Arduino"
+    },
+    "updated" => "2024-06-20T12:38:31.606Z"
+  }
+
+  @atom_item_not_nested_content %{
+    "authors" => [
+      %{"email" => "noreply@blogger.com", "name" => "Unknown", "uri" => nil}
+    ],
+    "categories" => [
+      %{
+        "label" => nil,
+        "scheme" => "http://www.blogger.com/atom/ns#",
+        "term" => "hardware"
+      }
+    ],
+    "content" => "<p>This is the content</p>",
     "contributors" => [],
     "extensions" => %{
       "media" => %{
@@ -384,18 +480,41 @@ defmodule Feedme.AtomFeedTest do
       parsed_feed = Reader.parse_rss_feed("https://dummy/feed.rss", @rss_feed)
       assert Enum.count(parsed_feed) == 3
     end
-
-    test "parses RSS feed 2" do
-      xml = File.read!("test/feedme/fixtures/feed1.xml")
-      IO.inspect(xml)
-      assert 1 == 1
-    end
   end
 
   describe "get_published_at/1" do
     test "gets the publish date" do
       published_at = Reader.get_published_at(@atom_item)
       assert published_at == {:ok, ~U[2024-06-20 12:38:31.606Z]}
+    end
+  end
+
+  describe "parse_body/1" do
+    test "parses the body when content is a map" do
+      body = Reader.parse_body(@atom_item)
+      assert body == "<p>This is the content</p>"
+    end
+
+    test "parses the body when content is a string" do
+      body = Reader.parse_body(@atom_item_not_nested_content)
+      assert body == "<p>This is the content</p>"
+    end
+  end
+
+  describe "parse_date/1" do
+    test "parses the ISO extended date" do
+      date = Reader.parse_date("2024-08-04T23:46:44.383+00:00")
+      assert date == {:ok, ~U[2024-08-04 23:46:44.383Z]}
+    end
+
+    test "parses the RFC1123 date" do
+      date = Reader.parse_date("Tue, 06 Aug 2024 01:32:23 +0000")
+      assert date == {:ok, ~U[2024-08-06 01:32:23Z]}
+    end
+
+    test "parses unsupported date" do
+      date = Reader.parse_date("2024-01-01")
+      assert date == {:error, "Unsupported date format"}
     end
   end
 end

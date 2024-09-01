@@ -1,0 +1,42 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns="http://purl.org/rss/1.0/">
+  <channel rdf:about="https://blog.steve.fi/">
+    <title>Steve Kemp's Blog</title>
+    <link>https://blog.steve.fi/</link>
+    <description>Debian and Free Software</description>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="https://blog.steve.fi/the_cp_m_emulator_is_good_enough__i_think_.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/the_cp_m_emulator_is_working_well.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/the_cp_m_emulator_development_continues.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/a_simple_golang_cp_m_emulator.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/a_simple_package_for_running_many_linters.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/falsehoods_i_used_to_believe_about_shoes.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/please_to_meet_you__hope_you_guessed_my_name_.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/old_school_cgi_scripts_.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/simple_repl_for_cp_m__in_z80_assembly.html"/>
+        <rdf:li rdf:resource="https://blog.steve.fi/simple_toy_languages.html"/>
+      </rdf:Seq>
+    </items>
+  </channel>
+  <item rdf:about="https://blog.steve.fi/the_cp_m_emulator_is_good_enough__i_think_.html">
+    <title>The CP/M emulator is good enough, I think.</title>
+    <link>https://blog.steve.fi/the_cp_m_emulator_is_good_enough__i_think_.html</link>
+    <content:encoded>&lt;p&gt;&lt;a href="https://blog.steve.fi/the_cp_m_emulator_is_working_well" rel="nofollow"&gt;My previous post&lt;/a&gt; mentioned that I&amp;#39;d added some custom syscalls to &lt;a href="https://github.com/skx/cpmulator" rel="nofollow"&gt;my CP/M emulator&lt;/a&gt; and that lead to some more updates, embedding a bunch of binaries within the emulator so that the settings can be tweaked at run-time, for example running:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;!DEBUG 1
+!CTRLC 1
+!CCP ccpz
+!CONSOLE adm-3a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Those embedded binaries show up on &lt;code&gt;A:&lt;/code&gt; even if they&amp;#39;re not in the &lt;code&gt;pwd&lt;/code&gt; when you launch the emulator.&lt;/p&gt;
+
+&lt;p&gt;Other than the custom syscalls I&amp;#39;ve updated the &lt;em&gt;real&lt;/em&gt; BDOS/BIOS syscalls a bit more, so that now I can run things like the Small C compiler, BBC BASIC, and more.  (BBCBasic.com used to launch just fine, but it turned out that the SAVE/LOAD functions didn&amp;#39;t work.  Ooops!)&lt;/p&gt;
+
+&lt;p&gt;I think I&amp;#39;ve now reached a point where all the binaries I care about run, and barring issues I will slow down/stop development. I can run Turbo Pascal, WordStar, various BASIC interpreters, and I have a significantly improved understanding of how CP/M works - a key milestone in that understanding was getting &lt;code&gt;SUBMIT.COM&lt;/code&gt; to execute, and understanding the split between the BDOS and the BIOS.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;d kinda like to port CP/M to a new (Z80-based) system - but I don&amp;#39;t have such a thing to hand, and I guess there&amp;#39;s no real need for it.  Perhaps I can say I&amp;#39;m &amp;#34;done&amp;#34; with retro stuff, and go back to playing Super Mario Bros (1985) with my boy!&lt;/p&gt;
+</content:encoded>
+    <dc:date>2024-07-09T20:00:00Z</dc:date>
+  </item>
+</rdf:RDF>

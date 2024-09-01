@@ -14,7 +14,7 @@ defmodule FeedmeWeb.ReaderLive do
   end
 
   def handle_event("refresh_feeds", _value, socket) do
-    Feedme.Reader.refresh_feeds()
+    # Feedme.Reader.refresh_feeds()
     {:noreply, socket}
   end
 end

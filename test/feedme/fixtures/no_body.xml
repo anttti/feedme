@@ -1,0 +1,44 @@
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+  <channel>
+    <title>Letters To A New Developer</title>
+    <atom:link href="https://letterstoanewdeveloper.com/feed/" rel="self" type="application/rss+xml"/>
+    <link>https://letterstoanewdeveloper.com</link>
+    <description>What I wish I had known when starting my development career</description>
+    <lastBuildDate>Thu, 08 Feb 2024 19:54:45 +0000</lastBuildDate>
+    <language>en</language>
+    <sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+    <sy:updateFrequency>
+	1	</sy:updateFrequency>
+    <generator>http://wordpress.com/</generator>
+    <cloud domain="letterstoanewdeveloper.com" port="80" path="/?rsscloud=notify" registerProcedure="" protocol="http-post"/>
+    <image>
+      <url>https://s0.wp.com/i/buttonw-com.png</url>
+      <title>Letters To A New Developer</title>
+      <link>https://letterstoanewdeveloper.com</link>
+    </image>
+    <atom:link rel="search" type="application/opensearchdescription+xml" href="https://letterstoanewdeveloper.com/osd.xml" title="Letters To A New Developer"/>
+    <atom:link rel="hub" href="https://letterstoanewdeveloper.com/?pushpress=hub"/>
+    <item>
+      <title>Thank you</title>
+      <link>https://letterstoanewdeveloper.com/2023/09/18/thank-you/</link>
+      <comments>https://letterstoanewdeveloper.com/2023/09/18/thank-you/#comments</comments>
+      <dc:creator><![CDATA[mooreds]]></dc:creator>
+      <pubDate>Mon, 18 Sep 2023 16:12:21 +0000</pubDate>
+      <category><![CDATA[letters to a new developer]]></category>
+      <category><![CDATA[goodbye]]></category>
+      <category><![CDATA[gratitude]]></category>
+      <guid isPermaLink="false">http://letterstoanewdeveloper.com/?p=13987</guid>
+      <description><![CDATA[Dear reader, Welcome to the last letter. I couldn&#8217;t have imagined what would happen when I penned my first letter 5 years ago. (I still think you should learn version control, for the record.) This blog outlasted two jobs. 280+ posts and 220,000+ visitors later, this project has changed my life in so many ways. &#8230; <a href="https://letterstoanewdeveloper.com/2023/09/18/thank-you/" class="more-link">Continue reading <span class="screen-reader-text">Thank you</span> <span class="meta-nav">&#8594;</span></a>]]></description>
+      <wfw:commentRss>https://letterstoanewdeveloper.com/2023/09/18/thank-you/feed/</wfw:commentRss>
+      <slash:comments>3</slash:comments>
+      <media:thumbnail url="https://letterstoanewdeveloper.files.wordpress.com/2023/08/wilhelm-gunkel-l04kczg_jvs-unsplash.jpg"/>
+      <media:content url="https://letterstoanewdeveloper.files.wordpress.com/2023/08/wilhelm-gunkel-l04kczg_jvs-unsplash.jpg" medium="image">
+        <media:title type="html">wilhelm-gunkel-L04Kczg_Jvs-unsplash</media:title>
+      </media:content>
+      <media:content url="https://1.gravatar.com/avatar/1e18b8a48ed58345d8d4f95db25791ec5cafe4e51de63dd08ed1b353705d75a6?s=96&amp;d=identicon&amp;r=G" medium="image">
+        <media:title type="html">mooreds</media:title>
+      </media:content>
+    </item>
+  </channel>
+</rss>
