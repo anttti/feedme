@@ -3,13 +3,12 @@
 defmodule Feedme.Reader do
   import Ecto.Query
 
-  alias Feedme.Reader.Item
+  alias Feedme.FeedUtilsAtom
+  alias Feedme.FeedUtilsCommon
+  alias Feedme.FeedUtilsRSS
   alias Feedme.Reader.Feed
+  alias Feedme.Reader.Item
   alias Feedme.Repo
-
-  import Feedme.FeedUtilsCommon
-  import Feedme.FeedUtilsRSS
-  import Feedme.FeedUtilsAtom
 
   # TODO
   #
@@ -51,7 +50,7 @@ defmodule Feedme.Reader do
 
     with {:ok, %{body: body, status: status}} <-
            Req.get(url: url, retry_log_level: false, max_retries: 1),
-         feed_type <- detect_type(body),
+         feed_type <- FeedUtilsCommon.detect_type(body),
          items <- handle_feed(status, feed_type, body, id, url) do
       items
     else
@@ -63,11 +62,11 @@ defmodule Feedme.Reader do
   end
 
   defp handle_feed(200, :rss, body, id, url) do
-    parse_rss_feed(id, url, body)
+    FeedUtilsRSS.parse_rss_feed(id, url, body)
   end
 
   defp handle_feed(200, :atom, body, id, url) do
-    parse_atom_feed(id, url, body)
+    FeedUtilsAtom.parse_atom_feed(id, url, body)
   end
 
   defp handle_feed(status, _, _, id, url) do
