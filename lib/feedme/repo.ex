@@ -5,6 +5,6 @@ defmodule Feedme.Repo do
 
   def insert_in_chunks(items, table, chunk_size \\ 1000) do
     Enum.chunk_every(items, chunk_size)
-    |> Enum.map(fn chunk -> Repo.insert_all(table, chunk) end)
+    |> Enum.map(fn chunk -> insert_all(table, chunk) end)
   end
 end

@@ -16,30 +16,27 @@ defmodule Feedme.Reader do
   #   Calculate MD5 hash for title + body to see if they're updated
 
   def refresh_feeds(offset, limit) do
-    feeds = from(Feed, limit: ^limit, offset: ^offset) |> Repo.all()
-    tasks = Enum.map(feeds, &Task.async(fn -> refresh_feed(&1.id, &1.url) end))
+    Feed
+    |> from(limit: ^limit, offset: ^offset)
+    |> Repo.all()
+    |> Enum.map(&Task.async(fn -> refresh_feed(&1.id, &1.url) end))
+    |> Enum.flat_map(&wait_for_task/1)
+    |> Enum.filter(fn item -> item.valid? end)
+    # Have to get the `.changes` to get the actual data fields, as that's how Repo.insert_all works
+    |> Enum.map(fn changeset -> changeset.changes end)
+    |> Repo.insert_in_chunks(Item)
+  end
 
-    results =
-      Enum.flat_map(tasks, fn task ->
-        # try/catch so that if a feed fetch fails, it does not take down the whole process
-        try do
-          Task.await(task)
-        catch
-          error, _ ->
-            IO.puts("CAUGHT!")
-            IO.inspect(error)
-            []
-        end
-      end)
-      |> Enum.filter(fn item -> item.valid? end)
-
-    valid_items =
-      Enum.filter(results, fn changeset -> changeset.valid? end)
-      # Have to get the `.changes` to get the actual data fields, as that's how Repo.insert_all works
-      |> Enum.map(fn changeset -> changeset.changes end)
-      |> Repo.insert_in_chunks(Item)
-
-    {:ok, Enum.count(valid_items)}
+  defp wait_for_task(task) do
+    # try/catch so that if a feed fetch fails, it does not take down the whole process
+    try do
+      Task.await(task)
+    catch
+      error, _ ->
+        IO.puts("Task failed, timeout?")
+        IO.inspect(error)
+        []
+    end
   end
 
   def refresh_feed(id, url) when is_binary(url) do
