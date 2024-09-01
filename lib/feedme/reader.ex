@@ -22,10 +22,11 @@ defmodule Feedme.Reader do
 
     results =
       Enum.flat_map(tasks, fn task ->
+        # try/catch so that if a feed fetch fails, it does not take down the whole process
         try do
           Task.await(task, 1000)
         catch
-          error ->
+          error, _ ->
             IO.puts("CAUGHT!")
             IO.inspect(error)
             []
@@ -43,9 +44,14 @@ defmodule Feedme.Reader do
 
     IO.puts("Valid items: #{Enum.count(valids)}, Invalid items: #{Enum.count(invalids)}")
 
-    Repo.insert_all(Item, valids)
+    insert_in_chunks(valids)
 
     {:ok, Enum.count(valids)}
+  end
+
+  def insert_in_chunks(items) do
+    Enum.chunk_every(items, 1000)
+    |> Enum.map(fn chunk -> Repo.insert_all(Item, chunk) end)
   end
 
   def refresh_feed(id, url) when is_binary(url) do
