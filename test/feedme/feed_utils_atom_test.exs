@@ -1,17 +1,17 @@
-defmodule Feedme.AtomFeedTest do
+defmodule Feedme.FeedUtilsAtomTest do
   use ExUnit.Case, async: true
-  alias Feedme.Reader
+  alias Feedme.FeedUtilsAtom
 
   describe "parse_atom_feed/2" do
     test "parses Atom feed" do
       feed = File.read!("test/feedme/fixtures/atom.xml")
-      parsed_feed = Reader.parse_atom_feed("https://dummy/feed.rss", feed)
+      parsed_feed = FeedUtilsAtom.parse_atom_feed("1", "https://dummy/feed.rss", feed)
       assert Enum.count(parsed_feed) == 1
     end
 
     test "parses Atom feed 2" do
       feed = File.read!("test/feedme/fixtures/atom2.xml")
-      parsed_feed = Reader.parse_atom_feed("https://dummy/feed.rss", feed)
+      parsed_feed = FeedUtilsAtom.parse_atom_feed("1", "https://dummy/feed.rss", feed)
 
       assert Enum.count(parsed_feed) == 1
 
