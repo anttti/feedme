@@ -17,9 +17,6 @@ defmodule Feedme.Reader do
 
   def refresh_feeds(offset, limit) do
     feeds = from(Feed, limit: ^limit, offset: ^offset) |> Repo.all()
-
-    # feeds = Repo.all(Feed)
-
     tasks = Enum.map(feeds, &Task.async(fn -> refresh_feed(&1.id, &1.url) end))
 
     results =
