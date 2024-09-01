@@ -11,7 +11,7 @@ defmodule Feedme.Reader do
   # Insert as bulk operation
   # Calculate MD5 hash for title + body to see if they're updated
 
-  def refresh_feeds(limit, offset) do
+  def refresh_feeds(offset, limit) do
     feeds = from(Feed, limit: ^limit, offset: ^offset) |> Repo.all()
 
     # feeds = Repo.all(Feed)
@@ -21,8 +21,7 @@ defmodule Feedme.Reader do
 
     results =
       Enum.flat_map(tasks, &Task.await(&1))
-      |> Enum.filter(&item_valid?/1)
-      |> Enum.map(fn {:ok, item} -> item end)
+      |> Enum.filter(fn item -> item.valid? end)
 
     valids = Enum.filter(results, fn changeset -> changeset.valid? end)
     invalids = Enum.filter(results, fn changeset -> !changeset.valid? end)
@@ -32,21 +31,16 @@ defmodule Feedme.Reader do
     # TODO: Insert results to DB
   end
 
-  defp item_valid?({:ok, item}) do
-    item.valid?
-  end
-
-  defp item_valid?({:error, _}) do
-    false
-  end
-
   def refresh_feed(url) when is_binary(url) do
-    with {:ok, %{body: body, status: status}} <- Req.get(url),
+    IO.puts("Fetching feed #{url}")
+
+    with {:ok, %{body: body, status: status}} <- Req.get(url: url),
          feed_type <- detect_type(body),
-         {:ok, items} <- handle_feed(status, feed_type, body, url) do
+         items <- handle_feed(status, feed_type, body, url) do
       items
     else
       {:error, error} ->
+        IO.puts("Error fetching feed #{url}")
         IO.inspect(error)
         []
     end
@@ -81,51 +75,33 @@ defmodule Feedme.Reader do
   def parse_rss_feed(_url, raw_feed) do
     with {:ok, feed} <- FastRSS.parse_rss(raw_feed) do
       items = Map.get(feed, "items")
-      parsed_items = Enum.map(items, &parse_rss_item/1)
-
-      {:ok,
-       Enum.filter(parsed_items, fn
-         {:ok, _} -> true
-         _ -> false
-       end)}
+      Enum.map(items, &parse_rss_item/1)
     end
   end
 
   def parse_atom_feed(_url, raw_feed) do
     with {:ok, feed} <- FastRSS.parse_atom(raw_feed) do
       items = Map.get(feed, "entries")
-      {:ok, Enum.map(items, &parse_atom_item/1)}
+      Enum.map(items, &parse_atom_item/1)
     end
   end
 
   def parse_rss_item(item) do
-    with {:ok, published_at} <- get_published_at(item) do
-      body = parse_body(item)
-
-      {:ok,
-       Item.changeset(%Item{}, %{
-         title: Map.get(item, "title"),
-         body: body,
-         published_at: published_at,
-         url: Map.get(item, "link")
-       })}
-    end
+    Item.changeset(%Item{}, %{
+      title: Map.get(item, "title"),
+      body: parse_body(item),
+      published_at: get_published_at(item),
+      url: Map.get(item, "link")
+    })
   end
 
   def parse_atom_item(item) do
-    with {:ok, published_at} <- get_published_at(item) do
-      url = Map.get(item, "links") |> Enum.find(&(&1["rel"] == "alternate")) |> Map.get("href")
-
-      body = parse_body(item)
-
-      {:ok,
-       Item.changeset(%Item{}, %{
-         title: Map.get(item, "title") |> Map.get("value"),
-         body: body,
-         published_at: published_at,
-         url: url
-       })}
-    end
+    Item.changeset(%Item{}, %{
+      title: Map.get(item, "title") |> Map.get("value"),
+      body: parse_body(item),
+      published_at: get_published_at(item),
+      url: Map.get(item, "links") |> Enum.find(&(&1["rel"] == "alternate")) |> Map.get("href")
+    })
   end
 
   def get_published_at(item) do
@@ -141,12 +117,12 @@ defmodule Feedme.Reader do
 
       true ->
         # No date field present so default to now
-        {:ok, DateTime.now!("Europe/Helsinki")}
+        DateTime.now!("Europe/Helsinki")
     end
   end
 
   def parse_date(nil) do
-    {:ok, DateTime.now!("Europe/Helsinki")}
+    DateTime.now!("Europe/Helsinki")
   end
 
   def parse_date(str) do
@@ -155,7 +131,7 @@ defmodule Feedme.Reader do
       # Could not parse the date so default to now
       parse_date(nil)
     else
-      result -> result
+      {:ok, result} -> result
     end
   end
 
