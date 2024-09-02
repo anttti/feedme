@@ -9,6 +9,7 @@ defmodule Feedme.Reader do
   alias Feedme.Reader.Feed
   alias Feedme.Reader.Item
   alias Feedme.Repo
+  alias Feedme.TaskUtils
 
   # TODO
   #
@@ -20,23 +21,11 @@ defmodule Feedme.Reader do
     |> from(limit: ^limit, offset: ^offset)
     |> Repo.all()
     |> Enum.map(&Task.async(fn -> refresh_feed(&1.id, &1.url) end))
-    |> Enum.flat_map(&wait_for_task/1)
+    |> Enum.flat_map(&TaskUtils.wait_task_and_catch/1)
     |> Enum.filter(fn item -> item.valid? end)
     # Have to get the `.changes` to get the actual data fields, as that's how Repo.insert_all works
     |> Enum.map(fn changeset -> changeset.changes end)
     |> Repo.insert_in_chunks(Item)
-  end
-
-  defp wait_for_task(task) do
-    # try/catch so that if a feed fetch fails, it does not take down the whole process
-    try do
-      Task.await(task)
-    catch
-      error, _ ->
-        IO.puts("Task failed, timeout?")
-        IO.inspect(error)
-        []
-    end
   end
 
   def refresh_feed(id, url) when is_binary(url) do
@@ -65,6 +54,8 @@ defmodule Feedme.Reader do
 
   defp handle_feed(status, _, _, id, url) do
     IO.puts("HTTP status #{status} fetching feed #{id}: #{url}")
+    # @TODO: Add failing feed to a list of failing feeds
+    # and after three strikes, remove the feed from DB
     []
   end
 end
