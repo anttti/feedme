@@ -50,4 +50,22 @@ defmodule Feedme.FeedUtilsCommonTest do
       assert FeedUtilsCommon.parse_date(date) == Timex.parse!(date, "{RFC1123}")
     end
   end
+
+  describe "detect_type/1" do
+    test "returns :rss for an RSS feed" do
+      feed = File.read!("test/feedme/fixtures/rss2.xml")
+      assert FeedUtilsCommon.detect_type(feed) == :rss
+      feed = File.read!("test/feedme/fixtures/rss3.xml")
+      assert FeedUtilsCommon.detect_type(feed) == :rss
+      feed = File.read!("test/feedme/fixtures/rss4.xml")
+      assert FeedUtilsCommon.detect_type(feed) == :rss
+    end
+
+    test "returns :atom for an Atom feed" do
+      feed = File.read!("test/feedme/fixtures/atom.xml")
+      assert FeedUtilsCommon.detect_type(feed) == :atom
+      feed = File.read!("test/feedme/fixtures/atom2.xml")
+      assert FeedUtilsCommon.detect_type(feed) == :atom
+    end
+  end
 end
