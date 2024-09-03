@@ -68,4 +68,42 @@ defmodule Feedme.FeedUtilsCommonTest do
       assert FeedUtilsCommon.detect_type(feed) == :atom
     end
   end
+
+  @item %{
+    "author" => nil,
+    "categories" => [],
+    "comments" => nil,
+    "content" => nil,
+    "description" => nil,
+    "dublin_core_ext" => nil,
+    "enclosure" => nil,
+    "extensions" => %{},
+    "guid" => %{
+      "permalink" => true,
+      "value" => "https://www.stavros.io/posts/making-the-strofara/"
+    },
+    "itunes_ext" => nil,
+    "link" => "https://www.stavros.io/posts/making-the-strofara/",
+    "pub_date" => "Sun, 11 Aug 2024 16:14:27 +0000",
+    "source" => nil,
+    "title" => "This is the title",
+    "summary" => nil
+  }
+
+  describe "parse_body/1" do
+    test "should parse body from content" do
+      item = %{@item | "content" => "This is the body"}
+      assert FeedUtilsCommon.parse_body(item) == "This is the body"
+    end
+
+    test "should parse body from description" do
+      item = %{@item | "description" => "Description"}
+      assert FeedUtilsCommon.parse_body(item) == "Description"
+    end
+
+    test "should parse body from summary" do
+      item = %{@item | "summary" => "Summary"}
+      assert FeedUtilsCommon.parse_body(item) == "Summary"
+    end
+  end
 end
