@@ -44,20 +44,17 @@ defmodule Feedme.FeedUtilsCommon do
   end
 
   def parse_body(item) do
-    fields = ["content", "summary", "description"]
-
-    body =
-      Enum.reduce(fields, nil, fn field, acc ->
-        case Map.get(item, field) do
-          nil -> acc
-          body -> body
+    with nil <- Map.get(item, "content"),
+         nil <- Map.get(item, "summary"),
+         nil <- Map.get(item, "description") do
+      ""
+    else
+      content ->
+        # Sometimes the body is a map with a "value" key, other times it's just a string
+        cond do
+          is_map(content) -> Map.get(content, "value")
+          true -> content
         end
-      end)
-
-    # Sometimes the body is a map with a "value" key, other times it's just a string
-    cond do
-      is_map(body) -> Map.get(body, "value")
-      true -> body
     end
   end
 end
