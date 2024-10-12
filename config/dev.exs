@@ -6,14 +6,7 @@ if Mix.env() == :dev do
 end
 
 # Configure your database
-config :feedme, Feedme.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "feedme_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+config :feedme, Feedme.Repo, database: "database.db"
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
