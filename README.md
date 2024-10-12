@@ -14,4 +14,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Running tests
 
-`mix test.watch --stale`
+Currently tests need to be run with max-cases 1, otherwise the SQLite DB
+gets angry due to multiple concurrent access attempts.
+
+`mix test.watch --stale --max-cases 1`
