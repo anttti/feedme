@@ -7,7 +7,8 @@ defmodule Feedme.FeedUtilsAtom do
       items = Map.get(feed, "entries")
       Enum.map(items, fn item -> parse_atom_item(feed_id, item) end)
     else
-      _ ->
+      err ->
+        IO.inspect(err)
         IO.puts("Error parsing Atom feed #{url}")
         []
     end
